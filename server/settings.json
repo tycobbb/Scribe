@@ -1,0 +1,10 @@
+{
+  "fixtures": {
+    "rebuild": true, 
+    "collections": { 
+      "anthologies" : true,
+      "compositions": true,
+      "lines"       : true
+    } 
+  } 
+}

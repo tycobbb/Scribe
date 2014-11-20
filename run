@@ -1,0 +1,21 @@
+#!/bin/sh
+
+function usage {
+  echo "usage: run -[dh]"; exit
+}
+
+while getopts dh name; do
+  case $name in
+    d)debug=1 ;;
+    h)usage   ;;
+  esac
+done
+
+if [[ -z "$debug" ]]; then
+  unset NODE_OPTIONS
+else 
+  NODE_OPTIONS='--debug-brk=3000'
+fi
+
+meteor --settings server/settings.json
+

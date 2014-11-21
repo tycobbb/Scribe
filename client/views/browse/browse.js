@@ -26,5 +26,6 @@ Template.browse.helpers({
       stories: Stories.find() 
     });  
   }
+
 });
 

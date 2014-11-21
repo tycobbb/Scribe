@@ -13,9 +13,11 @@ ApplicationController = RouteController.extend({
   //
 
   onRun: function() {
+    var self = this;
+
     // onRun is only called once, so buttons are not reactive (right now) 
-    this.updateButtons(function(buttons) {
-      return buttons.concat(this.buttons);    
+    self.updateButtons(function(buttons) {
+      return buttons.concat(self.buttons);    
     });
   },
 
@@ -27,10 +29,12 @@ ApplicationController = RouteController.extend({
   },
 
   onStop: function() {
+    var self = this;
+
     // clean up controller's custom header content
-    var buttonsCount = this.buttons ? this.buttons.count : 0;
-    this.updateButtons(function(buttons) {
-      return buttons.slice(buttons.count - buttonsCount); 
+    self.updateButtons(function(buttons) {
+      var buttonCount = self.buttons ? self.buttons.length : 0;
+      return buttons.slice(0, buttons.length - buttonCount); 
     });
   },
 

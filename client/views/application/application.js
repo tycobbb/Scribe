@@ -6,7 +6,7 @@ Template.header.helpers({
   },
   
   buttons: function() {
-    return []; // Session.get('header-buttons');
+    return Session.get('header-buttons');
   },
 
 });

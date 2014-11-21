@@ -18,6 +18,8 @@ var groups = [{
 
 }];
 
+var story = {};
+
 //
 // Template
 //
@@ -26,28 +28,26 @@ Template.create.helpers({
   
   groups: function() {
     return groups;  
+  },
+
+  submitDisabled: function() {
+    return false ? 'disabled="disabled"' : '';  
   }
 
 });
 
 Template.create.events({
+
+  'keyup .form-input': function(event, template) {
+    var input = $(event.target);
+    var key   = input.attr('name'),
+        value = input.val();
+
+    story[key] = value; 
+  },
   
   'submit .main-form': function(event, template) {
     event.preventDefault();
-
-    // get the keys of all the fields in the form 
-    var keys = _.chain(groups)
-      .map(function(group) { return group.fields; })
-      .flatten()
-      .pluck('key')
-      .value();
-   
-    // create the data for a story by pulling the values of all
-    // fields in the form 
-    var story = {};
-    keys.forEach(function(key) {
-      story[key] = $(event.target).find('[name=' + key + ']').val();
-    });
 
     // create the story
     Stories.insert(story); 

@@ -4,7 +4,7 @@
     {{#each groups}}
       {{> formGroup}}
     {{/each}}
-    <input class="form-submit" type="submit" value="Create">
+    <input class="form-submit" type="submit" {{ submitDisabled }} value="Create">
   </form>
 </template>
 

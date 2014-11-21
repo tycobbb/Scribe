@@ -19,6 +19,6 @@
 </template>
 
 <template name="storyCard"> 
-  <span>{{title}}</span>
+  <a href="{{ pathFor 'story' id=this._id }}">{{title}}</a>
 </template>
 

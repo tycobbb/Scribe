@@ -8,7 +8,7 @@ autopublish
 insecure
 iron:router
 accounts-base
-accounts-password
 y4ku:accounts-guest
 y4ku:accounts-ui-really-unstyled
+accounts-password
 

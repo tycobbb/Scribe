@@ -1,6 +1,7 @@
 Package.describe({
   summary: "Unstyled version of login widgets sans dropdown",
-  version: "1.0.0"
+  version: "1.0.0",
+  name: "y4ku:accounts-ui-really-unstyled"
 });
 
 Package.on_use(function (api) {

@@ -1,6 +1,5 @@
 accounts-base@1.1.2
 accounts-password@1.0.4
-accounts-ui-really-unstyled@1.0.0
 application-configuration@1.0.3
 autopublish@1.0.1
 autoupdate@1.1.3
@@ -68,3 +67,4 @@ url@1.0.2
 webapp-hashing@1.0.1
 webapp@1.1.4
 y4ku:accounts-guest@0.1.2
+y4ku:accounts-ui-really-unstyled@1.0.0

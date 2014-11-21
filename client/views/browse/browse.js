@@ -8,12 +8,19 @@ function Bucket(options) {
 }
 
 //
+// Controller
+//
+
+BrowseController = ApplicationController.extend({
+  title: 'Browse'
+});
+
+//
 // Browse 
 //
 
-Template.browse.helpers({
-  title: 'Browse',
-  
+Template.browse.helpers({ 
+
   activeStories: function() {
     return new Bucket({
       name: 'Active Stories',

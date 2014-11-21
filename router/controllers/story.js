@@ -4,7 +4,7 @@ StoryController = ApplicationController.extend({
   data: function() {
     // fetch the story
     var story = Stories.findOne({ 
-      _id: this.params.id 
+      _id: this.params._id 
     });
 
     // TODO: this might not be the best place to update the title, it'd be nice

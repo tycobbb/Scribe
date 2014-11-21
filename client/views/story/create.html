@@ -1,11 +1,13 @@
 
 <template name="create">
-  <form class="main-form">
-    {{#each groups}}
-      {{> formGroup}}
-    {{/each}}
-    <input class="form-submit" type="submit" {{ submitDisabled }} value="Create">
-  </form>
+  {{#with form}}
+    <form class="main-form">
+      {{#each groups}}
+        {{> formGroup}}
+      {{/each}}
+      <input class="form-submit" type="submit" {{ submitDisabled }} value="Create">
+    </form>
+  {{/with}}
 </template>
 
 <template name="formGroup">

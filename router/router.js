@@ -33,7 +33,7 @@ Router.route('/story/new', {
   name: 'create',
 });
 
-Router.route('/story/:id', {
+Router.route('/story/:_id', {
   name: 'story',
 });
 

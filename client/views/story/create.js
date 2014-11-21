@@ -2,32 +2,52 @@
 // Form Model
 //
 
-var groups = [{
-  
-  name: 'Info',
-  
-  fields: [{
-    name: 'Title',
-    key: 'title',
-    placeholder: 'Cryptonomichronic'
-  },{
-    name: 'Description',
-    key: 'description',
-    placeholder: 'A lengthy tome delving into the economics of small-time drug dealers on the gold standard.'
-  }]
+function Form() {
+    
+  this.story = new Story();
+ 
+  this.groups = [{ 
+    name: 'Info',
+    
+    fields: [
+      new Field(this, {
+        name: 'Title',
+        key: 'title',
+        placeholder: 'Cryptonomichronic'
+      }),
+   
+      new Field(this, {
+        name: 'Description',
+        key: 'description',
+        placeholder: 'A lengthy tome delving into the economics of small-time drug dealers on the gold standard.'
+      })
+    ]
+  }];
 
-}];
+};
 
-var story = {};
+//
+// Field Model
+//
+
+function Field(form, options) {
+  _.defaults(this, options);
+  this.form = form;
+}
+
+Field.prototype.update = function(value) {
+  // updat the model
+  this.form.story[this.key] = value;    
+};
 
 //
 // Template
 //
 
 Template.create.helpers({
-  
-  groups: function() {
-    return groups;  
+
+  form: function() {
+    return new Form();    
   },
 
   submitDisabled: function() {
@@ -39,18 +59,21 @@ Template.create.helpers({
 Template.create.events({
 
   'keyup .form-input': function(event, template) {
-    var input = $(event.target);
-    var key   = input.attr('name'),
-        value = input.val();
-
-    story[key] = value; 
+    this.update($(event.target).val());
   },
   
   'submit .main-form': function(event, template) {
-    event.preventDefault();
+    event.preventDefault(); 
+     
+    var self = this;
 
-    // create the story
-    Stories.insert(story); 
+    // sync the story 
+    self.story.create(function(error) {
+      // TODO: handle errors, perhaps using the reactive error biznaz
+      if(!error) {
+        Router.go('story', self.story);
+      }   
+    });
   }
   
 });

@@ -1,3 +1,15 @@
 <template name="signin">
-
+	<div class="login-container">
+		{{> loginButtons }}
+		{{> anonymousSignIn }}
+	</div>
+</template>
+<template name="anonymousSignIn">
+{{#unless currentUser}}
+	<h2> Or Sign in Anonymously! </h2>
+	<form class="login-form">
+	    <input type="text" id="anonNameInput">
+	    <button id="anonSubmit"> Sign In Anonymously with a Name </button>
+	</form>
+{{/unless}}
 </template>

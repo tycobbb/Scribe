@@ -8,14 +8,6 @@ function Bucket(options) {
 }
 
 //
-// Controller
-//
-
-BrowseController = ApplicationController.extend({
-  title: 'Browse'
-});
-
-//
 // Browse 
 //
 

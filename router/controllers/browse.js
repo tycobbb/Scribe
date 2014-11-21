@@ -1,5 +1,6 @@
 
 BrowseController = ApplicationController.extend({
-  title: 'Browse'
+  title: 'Browse',
+  buttons: [ 'createStoryButton' ]
 });
 

@@ -11,6 +11,11 @@
 <template name="header">
   <div class="header">
     <h3>{{title}}</h3>
-  </div>
+    <div class="buttons">
+      {{#each buttons}}
+        {{> UI.dynamic template=this}}
+      {{/each}}
+    </div>
+  </div> 
 </template>
 

@@ -1,3 +1,26 @@
-<template name="create">
 
+<template name="create">
+  <form class="main-form">
+    {{#each groups}}
+      {{> formGroup}}
+    {{/each}}
+    <input class="form-submit" type="submit" value="Create">
+  </form>
 </template>
+
+<template name="formGroup">
+  <div class="form-group">
+    <h4 class="group-title">{{name}}</h4>
+    {{#each fields}}
+      {{> formField}} 
+    {{/each}}
+  </div>
+</template>
+
+<template name="formField">
+  <div class="form-field-container">
+    <label class="form-label">{{name}}</label>
+    <input class="form-input" name="{{key}}" id="{{key}}" type="text" value="" placeholder="{{placeholder}}">
+  </div>
+</template>
+

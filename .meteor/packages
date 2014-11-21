@@ -10,5 +10,5 @@ iron:router
 accounts-base
 accounts-password
 y4ku:accounts-guest
-accounts-ui-unstyled
+accounts-ui-really-unstyled
 

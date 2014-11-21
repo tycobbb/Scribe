@@ -1,4 +1,12 @@
 <template name="signin">
   <h1>Sign-in</h1>
-  {{> loginButtons}}
+  {{> loginButtons }}
+  {{> anonymousSignIn }}
+</template>
+
+<template name="anonymousSignIn">
+  <form>
+	<input type="text" id="anonNameInput">
+	<button id="anonSubmit"> Sign In Anonymously with a Name </button>
+  </form>
 </template>

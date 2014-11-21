@@ -39,7 +39,12 @@ Template._loginButtonsLoggedInDropdown.helpers({
 
   dropdownVisible: function () {
     return loginButtonsSession.get('dropdownVisible');
+  },  
+
+  hasDropdown: function() {
+    return loginButtonsSession.get('hasDropdown');
   }
+
 });
 
 Template._loginButtonsLoggedInDropdownActions.helpers({
@@ -183,6 +188,9 @@ Template._loginButtonsLoggedOutDropdown.helpers({
 
   dropdownVisible: function () {
     return loginButtonsSession.get('dropdownVisible');
+  },
+  hasDropdown: function() {
+    return loginButtonsSession.get('hasDropdown');
   },
 
   hasPasswordService: hasPasswordService

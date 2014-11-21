@@ -1,5 +1,6 @@
 var VALID_KEYS = [
   'dropdownVisible',
+  'hasDropdown',
 
   // XXX consider replacing these with one key that has an enum for values.
   'inSignupFlow',
@@ -56,7 +57,9 @@ Accounts._loginButtonsSession = {
     this.set('inForgotPasswordFlow', false);
     this.set('inChangePasswordFlow', false);
     this.set('inMessageOnlyFlow', false);
-    this.set('dropdownVisible', false);
+    if(this.get('hasDropdown')) {
+      this.set('dropdownVisible', false);
+    }
     this.resetMessages();
   },
 

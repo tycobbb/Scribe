@@ -4,12 +4,12 @@
 <template name="_loginButtonsLoggedInDropdown">
   <div class="login-link-and-dropdown-list">
     <a class="login-link-text" id="login-name-link">
-      {{displayName}} ▾
+      {{displayName}} {{#if hasDropdown}} ▾ {{/if}}
     </a>
-
+    
     {{#if dropdownVisible}}
       <div id="login-dropdown-list" class="accounts-dialog">
-        <a class="login-close-text">Close</a>
+        {{#if hasDropdown}} <a class="login-close-text">Close</a> {{/if}}
         <div class="login-close-text-clear"></div>
 
         {{#if inMessageOnlyFlow}}
@@ -48,9 +48,9 @@
     {{#if dropdownVisible}}
       {{! This text is covered by the dropdown, but duplicating it here
           makes the position of "Close" match the position of this text. }}
-      <a class="login-link-text" id="login-sign-in-link">Sign in ▾</a>
+      <a class="login-link-text" id="login-sign-in-link">Sign in{{#if hasDropdown}} ▾ {{/if}}</a>
       <div id="login-dropdown-list" class="accounts-dialog">
-        <a class="login-close-text">Close</a>
+        {{#if hasDropdown}} <a class="login-close-text">Close</a> {{/if}}
         {{#if loggingIn}}
           {{> _loginButtonsLoggingIn}}
         {{/if}}

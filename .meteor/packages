@@ -12,4 +12,7 @@ y4ku:accounts-guest
 y4ku:accounts-ui-really-unstyled
 reactive-var
 accounts-password
+accounts-google
+accounts-facebook
+accounts-twitter
 

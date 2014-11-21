@@ -3,8 +3,7 @@
 //
 
 Router.configure({
-	layoutTemplate: 'layout',
-	notFoundTemplate: 'notFound'
+  controller: 'ApplicationController', 
 });
 
 // {only: somePage} to default to notFound Template in the case of a non existing parameter story/123
@@ -15,26 +14,26 @@ Router.onBeforeAction('dataNotFound');
 //
 
 Router.route('/', {
-  name: 'home'
+  name: 'home',
 });
 
 Router.route('/signin', {
-  name: 'signin'
+  name: 'signin',
 });
 
 Router.route('/intro', { 
-  name: 'intro' 
+  name: 'intro',
 });
 
 Router.route('/browse', {
-  name: 'browse'
+  name: 'browse',
 });
 
 Router.route('/story/new', {
-  name: 'create'  
+  name: 'create',
 });
 
 Router.route('/story/:id', {
-  name: 'story'
+  name: 'story',
 });
 

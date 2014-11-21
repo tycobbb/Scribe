@@ -1,0 +1,16 @@
+
+<template name="application">
+  {{> header}}
+  <div class="container">
+    <main>
+      {{> yield}}
+    </main>
+  </div>
+</template>
+
+<template name="header">
+  <div class="header">
+    <h3>{{title}}</h3>
+  </div>
+</template>
+

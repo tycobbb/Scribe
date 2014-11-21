@@ -18,26 +18,22 @@ Router.route('/', {
 });
 
 Router.route('/signin', {
-  name: 'signin'
+  name: 'signin',
 });
 
 Router.route('/intro', { 
   name: 'intro',
-  controller: 'IntroController'
 });
 
 Router.route('/browse', {
   name: 'browse',
-  controller: 'BrowseController'
 });
 
 Router.route('/story/new', {
   name: 'create',
-  controller: 'CreateController'  
 });
 
 Router.route('/story/:id', {
   name: 'story',
-  controller: 'StoryController'
 });
 

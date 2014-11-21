@@ -11,4 +11,7 @@ accounts-base
 y4ku:accounts-guest
 y4ku:accounts-ui-really-unstyled
 accounts-password
+accounts-google
+accounts-facebook
+accounts-twitter
 

@@ -1,3 +1,24 @@
+
 <template name="browse">
-  <h1>Browse</h1>
+  <h1>{{title}}</h1>
+  {{#with activeStories}}
+    {{> bucket}}
+  {{/with}}
+  {{#with memberStories}}
+    {{> bucket}}
+  {{/with}}
 </template>
+
+<template name="bucket">
+  <div class="bucket">
+    <h3>{{title}}</h3>
+    {{#each stories}}
+      {{> storyCard}} 
+    {{/each}}
+  </div>
+</template>
+
+<template name="storyCard"> 
+  <span>{{title}}</span>
+</template>
+

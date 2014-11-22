@@ -8,10 +8,6 @@ Template.create.helpers({
     return new StoryForm();    
   },
 
-  submitDisabled: function() {
-    return false ? 'disabled="disabled"' : '';  
-  }
-
 });
 
 Template.create.events({
@@ -40,21 +36,35 @@ function StoryForm() {
    
   // form configuration
   this.groups = [{ 
+    
     name: 'Info',
     
     fields: [
       new StoryField(this, {
         name: 'Title',
         key: 'title',
-        placeholder: 'Cryptonomichronic'
+        placeholder: 'Infinite Test'
       }),
    
       new StoryField(this, {
         name: 'Description',
         key: 'description',
-        placeholder: 'A lengthy tome delving into the economics of small-time drug dealers on the gold standard.'
+        placeholder: 'The unjustifiably satisfying greenery of the thing was what drove Hal\'s secret pursuit...'
       })
     ]
+
+  },{
+    name: 'Prompt',
+    
+    fields: [
+      new StoryField(this, {
+        name: 'Prompt',
+        key: 'prompt',
+        template: 'formPromptField',
+        placeholder: 'Write your own prompt, or start with an existing one that suits your fancy.'
+      }) 
+    ] 
+
   }];
 
 };
@@ -71,18 +81,24 @@ StoryForm.prototype.save = function(callback) {
   });
 };
 
+StoryForm.prototype.updatedField = function(field, value) { 
+  // update the model
+  this.form.story[field.key] = value;
+};
+
 //
 // Field -- View model backing a story form field
 //
 
 function StoryField(form, options) {
+  // apply the options
   _.defaults(this, options);
   
   this.form = form;
+  this.template = options.template || 'formField';
 }
 
 StoryField.prototype.update = function(value) {
-  // update the model
-  this.form.story[this.key] = value;    
+  this.form.updatedField(this, value);
 };
 

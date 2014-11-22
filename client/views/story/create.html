@@ -5,7 +5,7 @@
       {{#each groups}}
         {{> formGroup}}
       {{/each}}
-      <input class="form-submit" type="submit" {{ submitDisabled }} value="Create">
+      <input class="form-submit" type="submit" value="Create">
     </form>
   {{/with}}
 </template>
@@ -14,7 +14,7 @@
   <div class="form-group">
     <h4 class="group-title">{{name}}</h4>
     {{#each fields}}
-      {{> formField}} 
+      {{> UI.dynamic template=template}} 
     {{/each}}
   </div>
 </template>
@@ -22,6 +22,12 @@
 <template name="formField">
   <div class="form-field-container">
     <label class="form-label">{{name}}</label>
+    <input class="form-input" name="{{key}}" id="{{key}}" type="text" value="" placeholder="{{placeholder}}">
+  </div>
+</template>
+
+<template name="formPromptField">
+  <div class="form-field-container">
     <input class="form-input" name="{{key}}" id="{{key}}" type="text" value="" placeholder="{{placeholder}}">
   </div>
 </template>

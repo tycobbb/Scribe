@@ -55,6 +55,7 @@ Template._loginButtonsLoggedInDropdownActions.helpers({
     //
     // instead we use the heuristic: if the user has a username or email set.
     var user = Meteor.user();
+    //Making sure that anonymous user does not have option to change password.
     return user.username && !user.profile.anonymous || (user.emails && user.emails[0] && user.emails[0].address);
   }
 });

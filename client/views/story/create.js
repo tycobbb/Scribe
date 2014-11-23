@@ -6,7 +6,7 @@ Template.create.helpers({
 
   form: function() {
     return new StoryForm();    
-  },
+  }
 
 });
 
@@ -32,41 +32,46 @@ Template.create.events({
 function StoryForm() {
   
   // backing data model   
-  this.story = new Story();
+  this.story  = new Story();
+  this.groups = [];
    
-  // form configuration
-  this.groups = [{ 
-    
-    name: 'Info',
-    
-    fields: [
-      new StoryField(this, {
-        name: 'Title',
-        key: 'title',
-        placeholder: 'Infinite Test'
-      }),
-   
-      new StoryField(this, {
-        name: 'Description',
-        key: 'description',
-        placeholder: 'The unjustifiably satisfying greenery of the thing was what drove Hal\'s secret pursuit...'
-      })
-    ]
+  // build out models for the groups of fields that will drive the content of
+  // of the form.
+  
+  // starting with the 'info' group: metadata, etc.
+  var infoGroup = this.insertGroup({
+    name: 'Give your story a name.'
+  });
 
-  },{
-    name: 'Prompt',
+  infoGroup.insertField({
+    name: 'Title',
+    key: 'title',
+    placeholder: 'Infinite Test'
+  });
+
+  infoGroup.insertField({
+    name: 'Description',
+    key: 'description',
+    placeholder: 'The unjustifiably satisfying greenery of the thing was what drove Hal\'s secret pursuit...' 
+  });
+
+  // the 'content' group: prompt, intro text, etc.
+  var contentGroup = this.insertGroup({
+    name: 'What\'s your story about?'
+  })
     
-    fields: [
-      new StoryField(this, {
-        name: 'Prompt',
-        key: 'prompt',
-        template: 'formPromptField',
-        placeholder: 'Write your own prompt, or start with an existing one that suits your fancy.'
-      }) 
-    ] 
+  contentGroup.insertField({
+    key: 'prompt',
+    template: 'formPromptField',
+    placeholder: 'Write your own prompt, or start with an existing one that suits your fancy.'
+  });
+};
 
-  }];
-
+// creates, appends, and returns a new group with the specified options
+StoryForm.prototype.insertGroup = function(options) {
+  var group = new StoryGroup(this, options);
+  this.groups.push(group);
+  return group;  
 };
 
 StoryForm.prototype.save = function(callback) {
@@ -83,7 +88,26 @@ StoryForm.prototype.save = function(callback) {
 
 StoryForm.prototype.updatedField = function(field, value) { 
   // update the model
-  this.form.story[field.key] = value;
+  this.story[field.key] = value;
+};
+
+//
+// Group -- View model backing a stroup field-group
+//
+
+function StoryGroup(form, options) {
+  // apply the options
+  _.defaults(this, options);    
+
+  this.form = form;
+  this.fields = [];
+};
+
+// creates, appends, and returns a new field with the specified options
+StoryGroup.prototype.insertField = function(options) {
+  var field = new StoryField(this.form, options);
+  this.fields.push(field);
+  return field;
 };
 
 //

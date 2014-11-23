@@ -61,9 +61,16 @@ function StoryForm() {
   })
     
   contentGroup.insertField({
+    name: 'Prompt',
     key: 'prompt',
     template: 'formPromptField',
     placeholder: 'Write your own prompt, or start with an existing one that suits your fancy.'
+  });
+
+  contentGroup.insertField({
+    name: 'Start \'er off',
+    key: 'body',
+    placeholder: 'Write the initial paragraph, if you\'d like, to get things going.'
   });
 };
 

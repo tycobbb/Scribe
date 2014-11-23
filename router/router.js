@@ -14,26 +14,26 @@ Router.onBeforeAction('dataNotFound');
 //
 
 Router.route('/', {
-  name: 'home',
+  name: 'home'
 });
 
 Router.route('/signin', {
-  name: 'signin',
+  name: 'signin'
 });
 
 Router.route('/intro', { 
-  name: 'intro',
+  name: 'intro'
 });
 
 Router.route('/browse', {
-  name: 'browse',
+  name: 'browse'
 });
 
 Router.route('/story/new', {
-  name: 'create',
+  name: 'create'
 });
 
 Router.route('/story/:_id', {
-  name: 'story',
+  name: 'story'
 });
 

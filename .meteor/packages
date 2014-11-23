@@ -4,8 +4,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 iron:router
 accounts-base
 y4ku:accounts-guest
@@ -15,4 +13,3 @@ accounts-password
 accounts-google
 accounts-facebook
 accounts-twitter
-

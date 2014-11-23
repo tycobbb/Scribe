@@ -12,17 +12,17 @@ Automatically adds visitors as anonymous guests with a userId
 ```sh
 meteor add accounts-base
 meteor add accounts-password
-meteor add wenape:accounts-guest
+meteor add y4ku:accounts-guest
 ```
 
 then in client-only code
 ```javascript
-Guests.add()
+Anonymous.add()
 ```
 
 optionally (to clean out old guest accounts) in server-only code
 ```javascript
-Guests.add();
+Anonymous.add();
 ```
 
 Now Meteor.userId() will be populated for each new visitor, including across reloads

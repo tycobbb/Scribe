@@ -13,12 +13,13 @@ var constructor = (function() {
     Anonymous.prototype.add = function (name) {
       if (!Meteor.userId()) {
         res = Accounts.createUser({password: Meteor.uuid(), username: Meteor.uuid(), profile: {anonymous: "anonymous", name: name}});
-        console.log(res);
       }
     };
 
-    /* make anonymous users kinda non-users -- just ids 
-    * this allows the account-base "Sign-in" to still appear */    
+    /* 
+      This is probably not necessary but we can override whether an 
+      anonymous user has the option of logging out / keeping the sign in button around
+    */    
     Meteor.user = function () {
       var userId = Meteor.userId();
       if (!userId) {

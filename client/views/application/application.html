@@ -16,6 +16,15 @@
         {{> UI.dynamic template=this}}
       {{/each}}
     </div>
+    {{> logout}}
   </div> 
+</template>
+
+<template name="logout">
+  <div class="logout-header-section">
+    <span class="logoutDisplay">
+      {{#if isLoggedIn}} {{displayName}} -- <a id="logoutButton"> Sign Out </a> {{/if}}
+    </span>
+  </div>
 </template>
 

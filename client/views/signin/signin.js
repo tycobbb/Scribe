@@ -19,15 +19,15 @@ Template.signin.rendered = function() {
 		var user = Meteor.user();
 		if(user) {
 			if(user.profile && user.profile.newUser){			
-				console.log('New User!');
+				//console.log('New User!');
 				Router.go('/intro');
 	  		} else {
-	  			console.log('Old Bro!');
+	  			//console.log('Old Bro!');
 	  			Router.go('/browse');
 	  		}  		
 	  		currentComp.stop();
 	  	} else {
-	  		console.log('no user');
+	  		//console.log('no user');
 	  	}
 	});
-}
+};

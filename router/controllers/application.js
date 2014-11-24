@@ -14,7 +14,6 @@ ApplicationController = RouteController.extend({
 
   onRun: function() {
     var self = this;
-
     // onRun is only called once, so buttons are not reactive (right now) 
     self.updateButtons(function(buttons) {
       return buttons.concat(self.buttons);    

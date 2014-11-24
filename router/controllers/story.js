@@ -1,6 +1,10 @@
 
 StoryController = ApplicationController.extend({
 
+  waitOn: function() {
+    return Meteor.subscribe('story-one', this.params._id);
+  },
+
   data: function() {
     // fetch the story
     var story = Stories.findOne({ 

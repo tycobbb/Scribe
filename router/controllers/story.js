@@ -2,7 +2,7 @@
 StoryController = ApplicationController.extend({
 
   waitOn: function() {
-    return Meteor.subscribe('story-one', this.params._id);
+    return Meteor.subscribe('story-detail', this.params._id);
   },
 
   data: function() {

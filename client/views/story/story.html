@@ -1,3 +1,20 @@
-<template name="story">
 
+<template name="story">
+  {{> participants}}
+  {{> prompt}}
 </template>
+
+<template name="participants">
+  <ul class="story-participants">
+    {{#each users}}
+      <li class="story-user">{{name}}</li>  
+    {{/each}}
+  </ul>
+</template>
+
+<template name="prompt">
+  <div class="story-prompt">
+    {{prompt}}  
+  </div>
+</template>
+

@@ -85,7 +85,7 @@ StoryForm.prototype.save = function(callback) {
   var self = this;
   
   // sync the story 
-  self.story.create(function(error) {
+  self.story.remoteCreate(function(error) {
     // TODO: handle errors, perhaps using the reactive error biznaz
     if(!error) {
       Router.go('story', self.story);

@@ -16,18 +16,8 @@ Meteor.publish('stories-participating', function() {
 
 Meteor.publish('story-detail', function(storyId) {
   check(storyId, String);
-  return Stories.findOne({
+  return Stories.find({
     _id: storyId
-  });
-});
-
-Meteor.publish('story-users', function(storyId) {
-  check(storyId, String); 
-  // find the story
-  var story = Stories.findOne({ _id: storyId });
-  // get all its participating users 
-  return Users.find({
-    _id: { $in: story.participantIds } 
   });
 });
 

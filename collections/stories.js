@@ -27,7 +27,12 @@ Meteor.methods({
     
     // update this user as the story's author 
     story.authorId = this.userId;
-    story.participantIds = [ this.userId ];
+    
+    if(story.participantIds) {
+      story.participantIds.push(this.userId)
+    } else {
+      story.participantIds = [ this.userId ];
+    }
     
     // we'll need update the story based on the users permissions
     var storyId = Stories.insert(story); 

@@ -17,7 +17,6 @@ Template.userSearchField.helpers({
     return this.addedParticipants.getArray();
   }
 });
-var $searchContainer = $('.user-search-container');
 
 Template.create.events({
 
@@ -29,7 +28,7 @@ Template.create.events({
   'change .form-checkbox': function(event, template) {
     var checked = $(event.target).is(":checked")
     this.update(checked);
-    checked ? $searchContainer.show() : $searchContainer.hide();
+    //checked ? $searchContainer.show() : $searchContainer.hide();
   },
   
   'submit .main-form': function(event, template) {

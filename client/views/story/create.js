@@ -47,6 +47,10 @@ Template.create.events({
 
   'click .add-participant': function(event, template) {
     this.field.addedParticipants.push(this);
+  },
+
+  'click .remove-participant': function(event, template) {
+    this.field.addedParticipants.remove(this);
   }
 
 });

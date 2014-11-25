@@ -6,11 +6,11 @@ User.displayName = function() {
 };
 
 getSearchUsers = function(query) {
-    var re = new RegExp(query, "i");
-    return Meteor.users.find(
-    	{
-    		'username': {$regex: re}, 
-    		'profile.anonymous': { $ne: 'anonymous' }
-    	}
-    );
+	var re = new RegExp(query, "i");
+	return Meteor.users.find(
+		{
+			'username': {$regex: re}, 
+			'profile.anonymous': { $ne: 'anonymous' }
+		}
+	);
 }

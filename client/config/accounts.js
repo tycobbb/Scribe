@@ -1,5 +1,6 @@
 
 Accounts.ui.config({
-  noDropdown: true
+  noDropdown: true,
+  passwordSignupFields: 'USERNAME_AND_EMAIL'
 });
 

@@ -43,7 +43,7 @@
 
 <template name='formUserField'>
   <div class="invited-participant-container">
-    <p class="participant"> </p> <span class="remove-participant" data-userid="{{_id}}"> REMOVE </span>
+    <span class="participant"> </span> <span class="remove-participant" data-userid="{{user._id}}"> REMOVE </span>
   </div>>
 </template>
 
@@ -52,11 +52,16 @@
     <input id="userSearchInput">
     <div class="user-container">
       {{#each users}}
-        {{#with user=this parent=..}}
+        {{#with user=this field=..}}
           <div class="invited-participant-container">
-            <p class="participant">{{user.profile.name}} </p> <span class="add-participant" data-userid="{{user._id}}"> ADD </span>
+            <span class="participant">{{user.profile.name}} </span> <span class="add-participant" data-userid="{{user._id}}"> ADD </span>
           </div>
         {{/with}}
+      {{/each}}
+    </div>
+    <div class="added-participants">
+      {{#each addedParticipants}}
+        {{> formUserField}}
       {{/each}}
     </div>
   </div>

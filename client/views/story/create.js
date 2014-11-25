@@ -12,9 +12,11 @@ Template.create.helpers({
 Template.userSearchField.helpers({
   users: function() {
     return getSearchUsers(Iron.controller().reactiveUserSearchInput.get());
+  },
+  addedParticipants: function() {
+    return this.addedParticipants.getArray();
   }
 });
-
 var $searchContainer = $('.user-search-container');
 
 Template.create.events({
@@ -44,8 +46,7 @@ Template.create.events({
   },
 
   'click .add-participant': function(event, template) {
-    console.log(this.user);
-    console.log(this.parent);
+    this.field.addedParticipants.push(this);
   }
 
 });
@@ -113,7 +114,8 @@ function StoryForm() {
   userGroup.insertField({
     name: 'Invited Users',
     key: 'participantIds',
-    template: 'userSearchField'
+    template: 'userSearchField',
+    addedParticipants: new ReactiveArray()
   });
 
 };

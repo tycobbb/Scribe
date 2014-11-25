@@ -31,3 +31,4 @@ Meteor.publish('story-users', function(storyId) {
   });
 });
 
+Meteor.publish("searchUsers", getSearchUsers);

@@ -18,8 +18,11 @@
   </div>
 </template>
 
-<template name="storyCard"> 
-  <a href="{{ pathFor 'story' _id=this._id }}">{{title}}</a>
+<template name="storyCard">
+  <div class='story-card'>
+    <a href="{{ pathFor 'story' _id=this._id }}">{{title}}</a>
+    <p>{{description}}</p>
+  </div>
 </template>
 
 <template name="createStoryButton">

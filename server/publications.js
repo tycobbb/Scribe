@@ -16,7 +16,7 @@ Meteor.publish('stories-participating', function() {
 
 Meteor.publish('story-detail', function(storyId) {
   check(storyId, String);
-  return Stories.findOne({
+  return Stories.find({
     _id: storyId
   });
 });
@@ -30,5 +30,9 @@ Meteor.publish('story-users', function(storyId) {
     _id: { $in: story.participantIds } 
   });
 });
+
+//
+// Dyanmic User Search
+//
 
 Meteor.publish("searchUsers", getSearchUsers);

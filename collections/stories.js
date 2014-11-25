@@ -44,3 +44,6 @@ Meteor.methods({
 
 Story = Model.extend(Stories);
 
+// add relationships
+Story.toOne('users');
+

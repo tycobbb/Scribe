@@ -57,7 +57,7 @@ Template.create.events({
 function StoryForm() {
   
   // backing data model   
-  this.story  = new Story();
+  this.story  = Story.init();
   this.groups = [];
    
   // build out models for the groups of fields that will drive the content of

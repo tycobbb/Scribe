@@ -12,7 +12,7 @@ var constructor = (function() {
      */
     Anonymous.prototype.add = function (name) {
       if (!Meteor.userId()) {
-        res = Accounts.createUser({password: Meteor.uuid(), username: Meteor.uuid(), profile: {anonymous: "anonymous", name: name}});
+        res = Accounts.createUser({password: Meteor.uuid(), username: name, profile: {anonymous: "anonymous", name: name}});
       }
     };
 

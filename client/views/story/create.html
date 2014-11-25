@@ -19,17 +19,45 @@
   </div>
 </template>
 
-<template name="formField">
+<template name="formInputField">
   <div class="form-field-container">
     <label class="form-label">{{name}}</label>
     <input class="form-input" name="{{key}}" id="{{key}}" type="text" value="" placeholder="{{placeholder}}">
   </div>
 </template>
 
-<template name="formPromptField">
+<template name="formTextAreaField">
   <div class="form-field-container">
     <label class="form-label">{{name}}</label>
-    <input class="form-input" name="{{key}}" id="{{key}}" type="text" value="" placeholder="{{placeholder}}">
+    <textarea class="form-textarea" name="{{key}}" id="{{key}}" value="" placeholder="{{placeholder}}"></textarea>
   </div>
 </template>
 
+
+<template name="formCheckboxField">
+  <div class="form-field-container">
+    <label class="form-label">{{name}}</label>
+    <input class="form-checkbox" name="{{key}}" id="{{key}}" type="checkbox">
+  </div>
+</template>
+
+<template name='formUserField'>
+  <div class="invited-participant-container">
+    <p class="participant"> </p> <span class="remove-participant" data-userid="{{_id}}"> REMOVE </span>
+  </div>>
+</template>
+
+<template name="userSearchField">
+  <div class="user-search-container">
+    <input id="userSearchInput">
+    <div class="user-container">
+      {{#each users}}
+        {{#with user=this parent=..}}
+          <div class="invited-participant-container">
+            <p class="participant">{{user.profile.name}} </p> <span class="add-participant" data-userid="{{user._id}}"> ADD </span>
+          </div>
+        {{/with}}
+      {{/each}}
+    </div>
+  </div>
+</template>

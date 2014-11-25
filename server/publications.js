@@ -21,7 +21,6 @@ Meteor.publish('story-detail', function(storyId) {
   });
 });
 
-
 Meteor.publish('story-users', function(storyId) {
   check(storyId, String);  
   
@@ -81,4 +80,10 @@ Meteor.publish('story-users', function(storyId) {
   });
 
 });
+
+//
+// Dyanmic User Search
+//
+
+Meteor.publish("searchUsers", getSearchUsers);
 

@@ -3,8 +3,7 @@
 //
 
 function Bucket(options) {
-  this.name = options.name;
-  this.stories = options.stories;  
+  _.extend(this, options);
 }
 
 //
@@ -15,14 +14,14 @@ Template.browse.helpers({
 
   activeStories: function() {
     return new Bucket({
-      name: 'Active Stories',
+      title: 'Active Stories',
       stories: Stories.find()
     });
   },
   
   memberStories: function() {
     return new Bucket({
-      name: 'Your Stories',
+      title: 'Your Stories',
       stories: Stories.find() 
     });  
   }

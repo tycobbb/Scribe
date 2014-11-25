@@ -19,10 +19,10 @@
 </template>
 
 <template name="storyCard">
-  <span class='story-card'>
+  <div class='story-card'>
     <a href="{{ pathFor 'story' _id=this._id }}">{{title}}</a>
     <p>{{description}}</p>
-  </span>
+  </div>
 </template>
 
 <template name="createStoryButton">

@@ -34,7 +34,7 @@ Meteor.methods({
     story._id = storyId;
 
     return story;
-  }
+  },
 
 });
 
@@ -45,5 +45,5 @@ Meteor.methods({
 Story = Model.extend(Stories);
 
 // add relationships
-Story.toOne('users');
+Story.toMany('Meteor.users', 'participants');
 

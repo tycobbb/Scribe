@@ -2,7 +2,8 @@
   "fixtures": {
     "rebuild": true, 
     "collections": { 
-      "stories": true
+      "stories": true,
+      "users": true
     } 
   } 
 }

@@ -5,7 +5,7 @@ ApplicationController = RouteController.extend({
   // Templates
   // 
    
- 	layoutTemplate: 'application',
+  layoutTemplate: 'application',
 	notFoundTemplate: 'notFound',
 
   //

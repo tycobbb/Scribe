@@ -3,11 +3,11 @@
 //
 
 Meteor.publish('stories-active', function() {
-  return Stories.active();  
+  return Stories.findActive(this.userId);  
 });
 
 Meteor.publish('stories-participating', function() {
-  return Stories.participating(); 
+  return Stories.findByParticipantId(this.userId); 
 });
 
 //

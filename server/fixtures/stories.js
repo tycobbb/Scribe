@@ -17,6 +17,10 @@ Fixtures.group(function(group) {
     // Public stories 
     fixtures.insert({
 
+      defaults: {
+        isPrivate: false
+      },
+
       records: [{
         title: "Ender's Game",
         description: "A tale about a boy who wasn't much of a boy at all.",
@@ -29,9 +33,10 @@ Fixtures.group(function(group) {
       }],
       
       map: function(record) {
-        record.participantCount = _.random(2, users.length);
-        
         // add a random number of particiapnts from the mixed users
+        record.participantCount = _.random(2, users.mixed.length);
+        
+        // get the ids of the random users 
         record.participantIds = _.chain(users.mixed)
           .sample(record.participantCount)
           .pluck("_id").value();

@@ -15,14 +15,14 @@ Template.browse.helpers({
   activeStories: function() {
     return new Bucket({
       title: 'Active Stories',
-      stories: Stories.find()
+      stories: Stories.findActive(Meteor.userId())
     });
   },
   
-  memberStories: function() {
+  participatingStories: function() {
     return new Bucket({
       title: 'Your Stories',
-      stories: Stories.find() 
+      stories: Stories.findByParticipantId(Meteor.userId()) 
     });  
   }
 

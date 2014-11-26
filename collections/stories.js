@@ -4,12 +4,26 @@
 
 Stories = new Mongo.Collection('stories');
 
-Stories.active = function() {
-  return Stories.find({});
+//
+// returns the active stories for the browse screen
+// TODO: maybe this should also include private stories that the user is part of?
+Stories.findActive = function(userId) {
+  var options  = {};
+  options.sort = {
+    participantCount: -1
+  };
+      
+  return Stories.find({ 
+    isPrivate: false 
+  }, options);
 };
 
-Stories.participating = function() {
-  return Stories.find({});
+//
+// returns the stories the user with the given id is part of
+Stories.findByParticipantId = function(userId) {
+  return Stories.find({
+    participantIds: userId 
+  });
 };
 
 //
@@ -27,12 +41,12 @@ Meteor.methods({
     
     // update this user as the story's author 
     story.authorId = this.userId;
+    story.participantIds = _.chain([ this.userId ])
+      .union(story.participantIds)
+      .compact().value();
     
-    if(story.participantIds) {
-      story.participantIds.push(this.userId)
-    } else {
-      story.participantIds = [ this.userId ];
-    }
+    // track the number of participants 
+    story.participantCount = story.participantIds;
     
     // we'll need update the story based on the users permissions
     var storyId = Stories.insert(story); 

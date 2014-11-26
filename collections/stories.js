@@ -20,7 +20,6 @@ Stories.findActive = function(userId) {
   query.isPrivate = false;
 
   if(Meteor.users.isAnonymous(userId)) {
-    console.log("IS ANONYMOUS");
     query.allowAnonymous = true;
   }
 

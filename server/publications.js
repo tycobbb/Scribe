@@ -63,7 +63,6 @@ Meteor.publish('story-users', function(storyId) {
     },
     // if participantIds changes, re-observe the users
     changed: function(id, fields) {
-      console.log('story changed: ' + doc);
       if(_.has(fields, 'participantIds')) {
         observeUsers(fields); 
       }

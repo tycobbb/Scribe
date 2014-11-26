@@ -1,12 +1,11 @@
 //
 // Template
 //
-Template.create.helpers({
 
+Template.create.helpers({
   form: function() {
     return new StoryForm();
   }
-
 });
 
 Template.userSearchField.helpers({
@@ -26,7 +25,7 @@ Template.create.events({
   },
 
   'change .form-checkbox': function(event, template) {
-    var checked = $(event.target).is(":checked")
+    var checked = $(event.target).is(":checked");
     this.update(checked);
     //checked ? $searchContainer.show() : $searchContainer.hide();
   },
@@ -87,16 +86,10 @@ function StoryForm() {
     template: 'formTextAreaField'
   });
 
-  infoGroup.insertField({
-    name: 'Private Group?',
-    key: 'private',
-    template: 'formCheckboxField'
-  });
-
   // the 'content' group: prompt, intro text, etc.
   var contentGroup = this.insertGroup({
     name: 'What\'s your story about?'
-  })
+  });
     
   contentGroup.insertField({
     name: 'Prompt',
@@ -113,7 +106,13 @@ function StoryForm() {
   });
 
   var userGroup = this.insertGroup({
-    name: 'Invited Users'
+    name: 'Who\'s Participating?'
+  });
+
+  userGroup.insertField({
+    name: 'Private Group?',
+    key: 'isPrivate',
+    template: 'formCheckboxField'
   });
 
   userGroup.insertField({
@@ -123,7 +122,7 @@ function StoryForm() {
     addedParticipants: new ReactiveArray()
   });
 
-};
+}
 
 // creates, appends, and returns a new group with the specified options
 StoryForm.prototype.insertGroup = function(options) {
@@ -145,19 +144,19 @@ StoryForm.prototype.save = function(callback) {
 };
 
 StoryForm.prototype.addParticipant = function(_id) {
-  if(!this.story.participants) this.story.participants = [];
-  //this.insertField({
-  //  _id:_id
-  //});
+  if(!this.story.participants) {  
+    this.story.participants = [];
+  }
+  
   this.story.participants.push(userId);
-}
+};
 
 StoryForm.prototype.removeParticipant = function(_id) {
   var index = this.story.participants.indexOf(_id);
   if(index > -1) {
     this.story.participants.splice(index, 1);
   }
-}
+};
 
 StoryForm.prototype.updatedField = function(field, value) { 
   // update the model
@@ -165,16 +164,19 @@ StoryForm.prototype.updatedField = function(field, value) {
 };
 
 StoryForm.prototype.addToFieldArray = function(field, value) {
-  if(!this.story[field.key]) this.story[field.key] = [];
+  if(!this.story[field.key]) {
+    this.story[field.key] = [];
+  }
+
   this.story[field.key].push(value);
-}
+};
 
 StoryForm.prototype.removeFromFieldArray = function(field, value) {
   var index = this.story[field.key].indexOf(value);
   if(index > -1) {
     this.story[field.key].splice(index, 1);
   }
-}
+};
 
 //
 // Group -- View model backing a stroup field-group
@@ -186,7 +188,7 @@ function StoryGroup(form, options) {
 
   this.form = form;
   this.fields = [];
-};
+}
 
 // creates, appends, and returns a new field with the specified options
 StoryGroup.prototype.insertField = function(options) {
@@ -213,8 +215,8 @@ StoryField.prototype.update = function(value) {
 
 StoryField.prototype.addToArray = function(value) {
   this.form.addToFieldArray(this, value);
-}
+};
 
 StoryField.prototype.removeFromArray = function(value) {
   this.form.removeFromFieldArray(this, value);
-}
+};

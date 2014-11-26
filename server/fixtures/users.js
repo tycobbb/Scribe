@@ -28,15 +28,15 @@ Fixtures.group(function() {
   //
   // Authenticated users
   this.add({ 
-    records: _.map([{
-      name: 'John Kimball',
-      email: 'john@kimball.com' 
+    records: _.map([{ 
+      name: 'Jakub Misterka',   
+      email: 'kuba@mister.ka'  
     },{
       name: 'Ty Cobb',    
       email: 'ty@cobb.com'
     },{
-      name: 'Jakub Misterka',   
-      email: 'kuba@mister.ka' 
+      name: 'John Kimball',
+      email: 'john@kimball.com' 
     }], function(user) {
       return {
         profile: {

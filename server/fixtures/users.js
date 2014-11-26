@@ -1,11 +1,13 @@
 
-Meteor.startup(function() {
+Fixtures.group(function() {
+ 
+  //
+  // Configuration 
+  this.collection = Meteor.users; 
   
   //
-  // Anonymous Users
-  // 
-
-  Meteor.users.fixtures({ 
+  // Anonymous users
+  this.add({
     defaults: {
       profile: {
         anonymous: 'anonymous'  
@@ -22,6 +24,6 @@ Meteor.startup(function() {
       username: 'falcomaster99'   
     }] 
   });
-  
+
 });
 

@@ -12,10 +12,16 @@ Stories.findActive = function(userId) {
   options.sort = {
     participantCount: -1
   };
-      
-  return Stories.find({ 
-    isPrivate: false 
-  }, options);
+
+  var query = {};
+  query.isPrivate = false;
+
+  if(Meteor.users.isAnonymous(userId)) {
+    console.log("IS ANONYMOUS");
+    query.allowAnonymous = true;
+  }
+
+  return Stories.find(query, options);
 };
 
 //

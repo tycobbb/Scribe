@@ -15,13 +15,19 @@ User.displayName = function() {
   return '';
 };
 
-User.getSearchUsers = function(query) {
+Meteor.users.getSearchUsers = function(query, userId) {
 	var re = new RegExp(query, "i");
-	return Meteor.users.find(
+	return this.find(
 		{
 			'username'			: { $regex: re }, 
-			'profile.anonymous'	: { $ne: 'anonymous' }
+			'profile.anonymous'	: { $ne: 'anonymous' },
+			'_id'				: { $ne: userId }
 		}
 	);
 };
 
+Meteor.users.isAnonymous = function(userId) {
+	var user = this.findOne({'_id': userId});
+	if(!user) return true;
+	return user.profile.anonymous ? true : false;
+}

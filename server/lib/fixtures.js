@@ -23,7 +23,7 @@ Fixtures = {
     Meteor.startup(function() {
       // allow the caller to construct the new group
       var group = new FixtureGroup(); 
-      closure.call(group);
+      closure(group);
       
       if(!group.collection) {
         throw new Execption('no-collection', 'fixture groups must have a collection');
@@ -91,7 +91,7 @@ FixtureGroup.prototype.run = function(builder) {
 
 //
 // Fixture adding
-FixtureGroup.prototype.add = function(data) {
+FixtureGroup.prototype.insert = function(data) {
   this.fixtures.push(new Fixture(this.collection, data));
 };
 
@@ -128,7 +128,7 @@ FixtureGroup.prototype.execute = function() {
 
     // allow the builders to populate our fixtures
     _.each(self.builders, function(builder) {
-      builder.call(self);
+      builder(self);
     });
     
     // then run all the fixtures
@@ -154,10 +154,15 @@ var Fixture = function(collection, data) {
 
 Fixture.prototype.execute = function() {
   var self = this;
-    
-  // populate each record with the defaults object (if any) and insert it
+  
   _.each(self.data.records, function(record) {
-    record = _.defaults(record, self.data.defaults);
+    // add defaults to the record, if any
+    record = _.defaults(record, self.data.defaults); 
+    // apply the mapping to the record, if it exists
+    if(self.data.map) {
+      record = self.data.map(record);   
+    }
+    // insert the record
     self.collection.insert(record);
   }); 
 };

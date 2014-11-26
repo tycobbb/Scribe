@@ -1,52 +1,62 @@
 
-Fixtures.group(function() {
+Fixtures.group(function(group) {
  
   //
   // Configuration 
-  this.collection = Meteor.users; 
+  group.collection = Meteor.users; 
+
+  group.run(function(fixtures) {   
   
-  //
-  // Anonymous users
-  this.add({
-    defaults: {
-      profile: {
-        anonymous: 'anonymous'  
-      } 
-    },
+    //
+    // Anonymous users
+    fixtures.insert({
 
-    records: [{
-      username: 'billy'
-    },{
-      username: 'michelle'
-    },{
-      username: 'jefferson'   
-    },{
-      username: 'falcomaster99'   
-    }] 
-  });
-
-  //
-  // Authenticated users
-  this.add({ 
-    records: _.map([{ 
-      name: 'Jakub Misterka',   
-      email: 'kuba@mister.ka'  
-    },{
-      name: 'Ty Cobb',    
-      email: 'ty@cobb.com'
-    },{
-      name: 'John Kimball',
-      email: 'john@kimball.com' 
-    }], function(user) {
-      return {
+      defaults: {
         profile: {
-          name: user.name,   
-        },
-        emails: [{
-          address: user.email   
-        }]   
-      };
-    })
+          anonymous: 'anonymous'  
+        } 
+      },
+
+      records: [{
+        username: 'billy'
+      },{
+        username: 'michelle'
+      },{
+        username: 'jefferson'   
+      },{
+        username: 'falcomaster99'   
+      }] 
+
+    });
+
+    //
+    // Authenticated users
+    fixtures.insert({ 
+
+      records: [{ 
+        name: 'Jakub Misterka',   
+        email: 'kuba@mister.ka'  
+      },{
+        name: 'Ty Cobb',    
+        email: 'ty@cobb.com'
+      },{
+        name: 'John Kimball',
+        email: 'john@kimball.com' 
+      }],
+      
+      map: function(user) {
+        return {
+          profile: {
+            name: user.name,   
+          },
+          emails: [{
+            address: user.email   
+          }]   
+        };
+      }
+
+    });
+
   });
 
 });

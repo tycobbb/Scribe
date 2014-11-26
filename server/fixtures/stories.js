@@ -18,7 +18,8 @@ Fixtures.group(function(group) {
     fixtures.insert({
 
       defaults: {
-        isPrivate: false
+        isPrivate: false,
+        allowAnonymous: true 
       },
 
       records: [{
@@ -26,10 +27,10 @@ Fixtures.group(function(group) {
         description: "A tale about a boy who wasn't much of a boy at all.",
       },{
         title: "Infinite Jest",
-        description: "A tale about a boy who couldn't open up."
+        description: "A tale about a boy who couldn't open up.",
       },{
         title: "Barbie's Horse Adventure",
-        description: "This is a video game yo." 
+        description: "This is a video game yo.",
       }],
       
       map: function(record) {

@@ -15,10 +15,15 @@ Stories.findActive = function(userId) {
   options.sort = {
     participantCount: -1
   };
-      
-  return Stories.find({ 
-    isPrivate: false 
-  }, options);
+
+  var query = {};
+  query.isPrivate = false;
+
+  if(Meteor.users.isAnonymous(userId)) {
+    query.allowAnonymous = true;
+  }
+
+  return Stories.find(query, options);
 };
 
 // returns the stories the user with the given id is part of

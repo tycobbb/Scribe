@@ -10,7 +10,7 @@ Template.create.helpers({
 
 Template.userSearchField.helpers({
   users: function() {
-    return User.getSearchUsers(Iron.controller().reactiveUserSearchInput.get());
+    return Meteor.users.getSearchUsers(Iron.controller().reactiveUserSearchInput.get(), Meteor.userId());
   },
   addedParticipants: function() {
     return this.addedParticipants.getArray();
@@ -112,6 +112,12 @@ function StoryForm() {
   userGroup.insertField({
     name: 'Private Group?',
     key: 'isPrivate',
+    template: 'formCheckboxField'
+  });
+
+  userGroup.insertField({
+    name: 'Allow Anonymous Users?',
+    key: 'allowAnonymous',
     template: 'formCheckboxField'
   });
 

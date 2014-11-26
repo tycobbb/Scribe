@@ -86,5 +86,5 @@ Meteor.publish('story-users', function(storyId) {
 // Dyanmic User Search
 //
 
-Meteor.publish("searchUsers", User.getSearchUsers);
+Meteor.publish("searchUsers", Meteor.users.getSearchUsers);
 

@@ -10,7 +10,7 @@ Template.create.helpers({
 
 Template.userSearchField.helpers({
   users: function() {
-    return getSearchUsers(Iron.controller().reactiveUserSearchInput.get());
+    return User.getSearchUsers(Iron.controller().reactiveUserSearchInput.get());
   },
   addedParticipants: function() {
     return this.addedParticipants.getArray();

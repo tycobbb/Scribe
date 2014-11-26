@@ -18,7 +18,7 @@ Fixtures.group(function(group) {
     fixtures.insert({
 
       defaults: {
-        isPrivate: false
+        isPrivate: false,
         allowAnonymous: true 
       },
 

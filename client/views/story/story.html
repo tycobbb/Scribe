@@ -1,7 +1,22 @@
 
 <template name="story">
+  {{> editor}}
   {{> participants}}
   {{> prompt}}
+</template>
+
+<template name="editor">
+  <div class="story-lines">
+    {{#each lines}}
+      {{> line}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="line">
+  <span class="story-line">
+    {{text}} 
+  </span>
 </template>
 
 <template name="participants">

@@ -46,10 +46,12 @@ Template.create.events({
 
   'click .add-participant': function(event, template) {
     this.field.addedParticipants.push(this);
+    this.field.addToArray(this.user._id);
   },
 
   'click .remove-participant': function(event, template) {
     this.field.addedParticipants.remove(this);
+    this.field.removeFromArray(this.user._id);
   }
 
 });
@@ -144,9 +146,9 @@ StoryForm.prototype.save = function(callback) {
 
 StoryForm.prototype.addParticipant = function(_id) {
   if(!this.story.participants) this.story.participants = [];
-  this.insertField({
-    _id:_id
-  });
+  //this.insertField({
+  //  _id:_id
+  //});
   this.story.participants.push(userId);
 }
 
@@ -161,6 +163,18 @@ StoryForm.prototype.updatedField = function(field, value) {
   // update the model
   this.story[field.key] = value;
 };
+
+StoryForm.prototype.addToFieldArray = function(field, value) {
+  if(!this.story[field.key]) this.story[field.key] = [];
+  this.story[field.key].push(value);
+}
+
+StoryForm.prototype.removeFromFieldArray = function(field, value) {
+  var index = this.story[field.key].indexOf(value);
+  if(index > -1) {
+    this.story[field.key].splice(index, 1);
+  }
+}
 
 //
 // Group -- View model backing a stroup field-group
@@ -196,3 +210,11 @@ function StoryField(form, options) {
 StoryField.prototype.update = function(value) {
   this.form.updatedField(this, value);
 };
+
+StoryField.prototype.addToArray = function(value) {
+  this.form.addToFieldArray(this, value);
+}
+
+StoryField.prototype.removeFromArray = function(value) {
+  this.form.removeFromFieldArray(this, value);
+}

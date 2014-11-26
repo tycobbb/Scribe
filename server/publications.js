@@ -28,8 +28,9 @@ Meteor.publish('story-users', function(storyId) {
       Users = Meteor.users,
       handles = {};
   
-  function observeUsers(participantIds) {
+  function observeUsers(doc) {
     // tear down any existing observation on users
+    var participantIds = doc.participantIds;
     if(handles.users) {
       handles.users.stop();   
     }
@@ -38,7 +39,7 @@ Meteor.publish('story-users', function(storyId) {
     if(!participantIds) {
       return;   
     }
-    
+
     // observe the users and add them as they come in
     handles.users = Users.find({
       _id: { $in: participantIds }
@@ -62,6 +63,7 @@ Meteor.publish('story-users', function(storyId) {
     },
     // if participantIds changes, re-observe the users
     changed: function(id, fields) {
+      console.log('story changed: ' + doc);
       if(_.has(fields, 'participantIds')) {
         observeUsers(fields); 
       }

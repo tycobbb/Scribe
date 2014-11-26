@@ -15,7 +15,7 @@ User.displayName = function() {
   return '';
 };
 
-getSearchUsers = function(query) {
+User.getSearchUsers = function(query) {
 	var re = new RegExp(query, "i");
 	return Meteor.users.find(
 		{

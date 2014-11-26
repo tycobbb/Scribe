@@ -46,6 +46,7 @@ Fixtures.group(function(group) {
       
       map: function(user) {
         return {
+          username: user.name,
           profile: {
             name: user.name,   
           },

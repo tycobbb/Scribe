@@ -4,8 +4,10 @@ StoryController = ApplicationController.extend({
   subscriptions: function() {
     // block on the story detail
     this.subscribe('story-detail', this.params._id).wait();  
+
     // non-blocking subscriptions
     this.subscribe('story-users', this.params._id);
+    this.subscribe('story-lines', this.params._id);
   },
 
   data: function() {

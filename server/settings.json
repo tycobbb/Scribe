@@ -3,7 +3,8 @@
     "rebuild": true, 
     "collections": { 
       "stories": true,
-      "users": true
+      "users": true,
+      "lines": true
     } 
   } 
 }

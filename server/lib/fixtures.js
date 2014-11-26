@@ -158,12 +158,20 @@ Fixture.prototype.execute = function() {
   _.each(self.data.records, function(record) {
     // add defaults to the record, if any
     record = _.defaults(record, self.data.defaults); 
+  
     // apply the mapping to the record, if it exists
     if(self.data.map) {
       record = self.data.map(record);   
     }
+   
     // insert the record
-    self.collection.insert(record);
+    var id = self.collection.insert(record);
+    record._id = id;
+    
+    // call the after function for post-processing
+    if(self.data.after) {
+      self.data.after(record);   
+    }
   }); 
 };
 

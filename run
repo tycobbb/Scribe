@@ -1,13 +1,14 @@
 #!/bin/sh
 
 function usage {
-  echo "usage: run -[dh]"; exit
+  echo "usage: run -[dnh]"; exit
 }
 
-while getopts dh name; do
+while getopts dnh name; do
   case $name in
-    d)debug=1 ;;
-    h)usage   ;;
+    d)debug=1      ;;
+    n)nofixtures=1 ;;
+    h)usage        ;;
   esac
 done
 
@@ -15,6 +16,12 @@ if [[ -z "$debug" ]]; then
   unset NODE_OPTIONS
 else 
   NODE_OPTIONS='--debug-brk=3000'
+fi
+
+if [[ -z "$nofixtures" ]]; then
+  unset PREVENT_FIXTURES
+else
+  export PREVENT_FIXTURES='1'
 fi
 
 meteor --settings server/settings.json

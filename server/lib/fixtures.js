@@ -3,8 +3,9 @@
 //
 
 var settings = Meteor.settings.fixtures;
+var preventFixtures = !settings.rebuild || process.env.PREVENT_FIXTURES;
 
-console.log('fixtures: ' + (settings.rebuild ? 'enabled' : 'disabled'));
+console.log('fixtures: ' + (preventFixtures ? 'disabled' : 'enabled'));
 
 //
 // Interface
@@ -112,7 +113,7 @@ FixtureGroup.prototype.execute = function() {
   var self = this;
 
   // don't run fixtures if they're disabled globally
-  if(!settings.rebuild) {
+  if(preventFixtures) {
     return;   
   }
 

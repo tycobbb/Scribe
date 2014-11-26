@@ -123,6 +123,9 @@ FixtureGroup.prototype.execute = function() {
   console.log('fixtures.' + collectionName + ': ' + (shouldRebuild ? 'rebuilding...' : 'disabled'));
 
   if(shouldRebuild) {
+    // purge stale data (everything in this colleciton)
+    self.collection.remove({});
+
     // allow the builders to populate our fixtures
     _.each(self.builders, function(builder) {
       builder.call(self);
@@ -152,9 +155,6 @@ var Fixture = function(collection, data) {
 Fixture.prototype.execute = function() {
   var self = this;
     
-  // purge stale data (everything in this colleciton)
-  self.collection.remove({});
-
   // populate each record with the defaults object (if any) and insert it
   _.each(self.data.records, function(record) {
     record = _.defaults(record, self.data.defaults);

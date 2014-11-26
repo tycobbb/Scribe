@@ -25,5 +25,29 @@ Fixtures.group(function() {
     }] 
   });
 
+  //
+  // Authenticated users
+  this.add({ 
+    records: _.map([{
+      name: 'John Kimball',
+      email: 'john@kimball.com' 
+    },{
+      name: 'Ty Cobb',    
+      email: 'ty@cobb.com'
+    },{
+      name: 'Jakub Misterka',   
+      email: 'kuba@mister.ka' 
+    }], function(user) {
+      return {
+        profile: {
+          name: user.name,   
+        },
+        emails: [{
+          address: user.email   
+        }]   
+      };
+    })
+  });
+
 });
 

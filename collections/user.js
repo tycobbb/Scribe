@@ -2,15 +2,17 @@
 User = Model.extend(Meteor.users);
 
 User.displayName = function() {
-  if (this.profile && this.profile.name)
+  if(this.profile && this.profile.name) {
     return this.profile.name;
-  if (this.username)
+  }
+  else if(this.username) {
     return this.username;
-  if (this.emails && this.emails[0] && this.emails[0].address)
+  }
+  else if(this.emails && this.emails[0] && this.emails[0].address) {
     return this.emails[0].address;
+  }
 
   return '';
-  //return this.emails ? this.emails[0] : this.profile.name || this._id;
 };
 
 getSearchUsers = function(query) {
@@ -21,4 +23,5 @@ getSearchUsers = function(query) {
 			'profile.anonymous'	: { $ne: 'anonymous' }
 		}
 	);
-}
+};
+

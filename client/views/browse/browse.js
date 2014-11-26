@@ -28,3 +28,11 @@ Template.browse.helpers({
 
 });
 
+Template.storyCard.helpers({
+  
+  participantCount: function() {
+    return this.participantCount + ' users';
+  }
+      
+});
+

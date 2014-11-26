@@ -21,6 +21,7 @@
 <template name="storyCard">
   <div class='story-card'>
     <a href="{{ pathFor 'story' _id=this._id }}">{{title}}</a>
+    <span>{{participantCount}}</span>
     <p>{{description}}</p>
   </div>
 </template>

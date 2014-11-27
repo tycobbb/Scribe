@@ -6,17 +6,30 @@
 </template>
 
 <template name="editor">
-  <div class="story-lines">
-    {{#each lines}}
-      {{> line}}
-    {{/each}}
-  </div>
+  <div class="story-editor">
+    <div class="story-lines">
+      {{#each lines}}
+        {{> line}}
+      {{/each}}
+    </div>
+    {{> editorInput}}
+ </div>
 </template>
 
 <template name="line">
   <span class="story-line">
     {{text}} 
   </span>
+</template>
+
+<template name="editorInput">
+  {{#with lineEditor}}
+    <form class="story-form">
+      <input class="story-input" type="text" value={{text}} placeholder="What's next?">
+      <input class="story-button cancel" type="reset" value="✗">
+      <input class="story-button add" type="submit" value="✓"> 
+    </form> 
+  {{/with}}
 </template>
 
 <template name="participants">
